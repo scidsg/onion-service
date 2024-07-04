@@ -19,5 +19,10 @@ echo "SocksPort 0.0.0.0:9050" > /etc/tor/torrc
 echo "HiddenServiceDir /var/lib/tor/onion_service" >> /etc/tor/torrc
 echo "HiddenServicePort 80 $ONION_PORT" >> /etc/tor/torrc
 
+echo "Onion service configured:"
+echo "-------------------------"
+cat /etc/tor/torrc
+echo "-------------------------"
+
 # Start tor
 exec sudo -u debian-tor tor -f /etc/tor/torrc
