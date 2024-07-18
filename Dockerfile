@@ -2,14 +2,10 @@ FROM debian:bookworm-slim
 WORKDIR /tmp
 
 # Required environment variables
-ENV APP_ONION_HOSTNAME="changeme"
-ENV APP_ONION_PUBLIC_KEY_B64="changeme"
-ENV APP_ONION_SECRET_KEY_B64="changeme"
-ENV APP_ONION_PORT="changeme"
-ENV STATIC_ONION_HOSTNAME="changeme"
-ENV STATIC_ONION_PUBLIC_KEY_B64="changeme"
-ENV STATIC_ONION_SECRET_KEY_B64="changeme"
-ENV STATIC_ONION_PORT="changeme"
+ENV ONION_HOSTNAME="changeme"
+ENV ONION_PUBLIC_KEY_B64="changeme"
+ENV ONION_SECRET_KEY_B64="changeme"
+ENV ONION_PORT="changeme"
 
 # Install updates
 RUN apt-get update && \
