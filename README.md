@@ -20,3 +20,9 @@ docker run --rm \
   -e ONION_PORT=example.com:80 \
   onion-service
 ```
+
+To generate a new key, you can use the `generate-onion-key` docker container like this:
+
+```sh
+docker run --rm -it $(docker build -q -f generate-onion-key/Dockerfile generate-onion-key)
+```
