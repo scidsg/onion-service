@@ -14,6 +14,19 @@ declare -r UMASK=$(umask || echo 0022)
 : "${ONION_SECRET_KEY_B64:?'not set or empty'}"
 : "${ONION_PORT:?'not set or empty'}"
 
+# Validate ONION_PORT to prevent torrc injection
+# Expected format: "<hostname>:<port>" (e.g., app:8080)
+if [[ ! "$ONION_PORT" =~ ^[A-Za-z0-9._-]+:[0-9]{1,5}$ ]]; then
+  echo "ONION_PORT must be in the format '<hostname>:<port>'" >&2
+  exit 1
+fi
+
+port="${ONION_PORT##*:}"
+if (( port < 1 || port > 65535 )); then
+  echo "ONION_PORT port must be between 1 and 65535" >&2
+  exit 1
+fi
+
 # Debug output
 echo "ONION_HOSTNAME: $ONION_HOSTNAME"
 echo "ONION_PUBLIC_KEY_B64: $ONION_PUBLIC_KEY_B64"
