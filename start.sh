@@ -32,7 +32,7 @@ chown -R "$USER:$GROUP" "$ONION_DIR"
 umask "$UMASK"
 
 # Configure torrc
-echo "SocksPort 0.0.0.0:9050" > "$TORRC"
+echo "SocksPort 127.0.0.1:9050" > "$TORRC"
 echo "HiddenServiceDir $ONION_DIR" >> "$TORRC"
 echo "HiddenServicePort 80 $ONION_PORT" >> "$TORRC"
 
